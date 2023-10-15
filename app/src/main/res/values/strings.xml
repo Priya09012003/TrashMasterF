@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TrashMaster</string>
+    <string name="about_us">Report</string>
+    <string name="support">Support</string>
+    <string name="my_account">My Account</string>
+    <string name="my_rewards">My Rewards</string>
+    <string name="languages">Languages</string>
+    <string name="total_collections">Total Collections</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>
