@@ -12,9 +12,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        
+
     <ImageButton
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -26,8 +27,10 @@
         android:layout_marginBottom="50dp"
         android:layout_marginEnd="50dp"
         android:clickable="true"
+        android:id="@+id/cambtn"
 
         />
+
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -37,6 +40,7 @@
         app:menu="@menu/nav_men"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:layout_marginTop="90dp"/>
+        android:layout_marginTop="90dp"
+        android:background="#009688"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
