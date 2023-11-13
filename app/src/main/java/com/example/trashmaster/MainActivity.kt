@@ -36,19 +36,21 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle:ActionBarDrawerToggle
     lateinit var cameraBtn:ImageButton
+    lateinit var drawerLayout: DrawerLayout
     val REQUEST_IMAGE_CAPTURE=100
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawerLayout:DrawerLayout=findViewById(R.id.drawer)
+         drawerLayout=findViewById(R.id.drawer)
         val navView:NavigationView=findViewById(R.id.nav_view)
 
         toggle= ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
@@ -60,13 +62,18 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeAsUpIndicator(R.drawable.img)
         navView.setNavigationItemSelectedListener {
+            it.isChecked=true
             when(it.itemId){
-                R.id.acc->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
-                R.id.rew->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
-                R.id.lang->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
-                R.id.coll->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
-                R.id.supp->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
-                R.id.About->Toast.makeText(applicationContext,"Clicked",Toast.LENGTH_SHORT).show()
+                R.id.home->{
+                    it.isChecked=true
+                    val intent=Intent(this,MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.acc->Replace(myAccount(),"My Account")
+                R.id.rew->Replace(Rewards(),it.title.toString())
+                R.id.coll->Replace(totalCollection(),"Collection")
+                R.id.supp->Replace(Support(),it.title.toString())
+                R.id.Report->Replace(Report(),it.title.toString())
             }
             true
         }
@@ -133,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         }
        else if(item.itemId==R.id.notifiy)
         {
-           Toast.makeText(this,"notified",Toast.LENGTH_SHORT).show()
+            Replace(Notfiction(),"Notification")
         }
         return super.onOptionsItemSelected(item)
     }
@@ -168,6 +175,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun Replace(fragment: Fragment,title:String)
+    {
+    val fragmentManager=supportFragmentManager
+    val transcation =fragmentManager.beginTransaction()
+        transcation.replace(R.id.frame,fragment)
+        transcation.commit()
+        drawerLayout.closeDrawers()
+        setTitle(title)
+
+    }
     //create image uri
 //    private fun createImageUri(): Uri?
 //    {

@@ -30,6 +30,10 @@
         android:id="@+id/cambtn"
 
         />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frame"/>
 
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
@@ -41,6 +45,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:layout_marginTop="90dp"
-        android:background="#009688"/>
+        android:background="@color/white"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

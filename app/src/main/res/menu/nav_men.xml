@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
+<group android:checkableBehavior="single" >
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24">
+
+    </item>
     <item
         android:id="@+id/acc"
         android:title="@string/my_account"
@@ -14,10 +22,7 @@
         android:icon="@drawable/baseline_card_giftcard_24">
     </item>
 
-    <item android:id="@+id/lang"
-        android:title="@string/languages"
-        android:icon="@drawable/img_3">
-    </item>
+
 
     <item android:id="@+id/coll"
         android:title="@string/total_collections"
@@ -29,8 +34,9 @@
         android:icon="@drawable/baseline_support_agent_24">
     </item>
 
-    <item android:id="@+id/About"
+    <item android:id="@+id/Report"
         android:title="@string/about_us"
         android:icon="@drawable/baseline_info_24">
     </item>
+    </group>
 </menu>
